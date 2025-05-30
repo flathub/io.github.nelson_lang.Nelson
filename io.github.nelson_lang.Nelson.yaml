@@ -182,5 +182,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/nelson-lang/nelson.git
-        commit: 5385e9ecc46eaf56880a77148c26183b44c930ab
+        commit: 89d05c2d42f00c229da0f853b5efe2bab109353d
 
