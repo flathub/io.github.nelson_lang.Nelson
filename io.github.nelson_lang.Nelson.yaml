@@ -17,8 +17,8 @@ cleanup:
   - '*.la'
   - '*.a'
   - '*.cmake'
-  - '/lib/pkgconfig'
-  - '/share/pkgconfig'
+  - /lib/pkgconfig
+  - /share/pkgconfig
 
 modules:
   - name: utf8cpp
@@ -59,7 +59,7 @@ modules:
       - -DBUILD_TESTING:BOOL=OFF
       - -DDYNAMIC_ARCH:BOOL=ON
       # required to generate a new lib/libopenblas.so
-      - -DBUILD_SHARED_LIBS:BOOL=ON 
+      - -DBUILD_SHARED_LIBS:BOOL=ON
       - -DCMAKE_INSTALL_LIBDIR=lib
       - -DCMAKE_BUILD_TYPE=Release
     sources:
@@ -79,7 +79,7 @@ modules:
       - type: archive
         url: https://github.com/Reference-LAPACK/lapack/archive/v3.12.0.tar.gz
         sha256: eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b
-  
+
   - name: boost
     buildsystem: simple
     build-commands:
@@ -87,9 +87,9 @@ modules:
       - ./b2 headers
       - ./b2 install
     sources:
-      - sha256: 85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a
+      - sha256: 49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305
         type: archive
-        url: https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2
+        url: https://archives.boost.io/release/1.90.0/source/boost_1_90_0.tar.bz2
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -150,7 +150,7 @@ modules:
         sha256: 4aa5ac827ee49a3111f88f8d9b8ae034b8757384477e8f29cb64582c7d54e156
     config-opts:
       - -DBUILD_SHARED_LIBS=ON
-      - -DENABLE_EXTENDED_SPARSE=ON        
+      - -DENABLE_EXTENDED_SPARSE=ON
 
   - shared-modules/linux-audio/fftw3f.json
 
