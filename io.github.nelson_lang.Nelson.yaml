@@ -64,8 +64,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: archive
-        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.29.tar.gz
-        sha256: 38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb
+        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.28.tar.gz
+        sha256: f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1
 
   - name: lapack
     buildsystem: cmake-ninja
@@ -171,7 +171,7 @@ modules:
       - -DMPI_ROOT=/app
       - -DMPI_C_COMPILER=/app/bin/mpicc
       - -DMPI_CXX_COMPILER=/app/bin/mpicxx
-      - -DBoost_DIR=/app/lib/cmake/Boost-1.89.0
+      - -DBoost_DIR=/app/lib/cmake/Boost-1.90.0
       - -DBLA_VENDOR=OpenBLAS
       - -DOpenBLAS_ROOT=/app
       - -DLAPACK_ROOT=/app
@@ -183,5 +183,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/nelson-lang/nelson.git
-        commit: ec13925252a1d33fff8d676b780027f22de03a5b
+        commit: 6cd5fb317845a537c4125bf6958c637582a579e1
 
