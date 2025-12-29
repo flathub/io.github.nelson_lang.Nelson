@@ -61,7 +61,7 @@ modules:
       # required to generate a new lib/libopenblas.so
       - -DBUILD_SHARED_LIBS:BOOL=ON
       - -DCMAKE_INSTALL_LIBDIR=lib
-      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     cleanup:
       - /bin
       - /include
