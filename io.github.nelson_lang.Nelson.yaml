@@ -1,7 +1,7 @@
 app-id: io.github.nelson_lang.Nelson
 rename-icon: nelson
 runtime: org.kde.Platform
-runtime-version: "6.9"
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 command: nelson
 finish-args:
@@ -17,8 +17,8 @@ cleanup:
   - '*.la'
   - '*.a'
   - '*.cmake'
-  - '/lib/pkgconfig'
-  - '/share/pkgconfig'
+  - /lib/pkgconfig
+  - /share/pkgconfig
 
 modules:
   - name: utf8cpp
@@ -56,9 +56,12 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DBUILD_TESTING:BOOL=OFF
+      - -DDYNAMIC_ARCH:BOOL=ON
+      # required to generate a new lib/libopenblas.so
+      - -DBUILD_SHARED_LIBS:BOOL=ON
+      - -DCMAKE_INSTALL_LIBDIR=lib
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=ON
-      - -DUSE_OPENMP=ON
     cleanup:
       - /bin
       - /include
@@ -88,7 +91,7 @@ modules:
       - type: archive
         url: https://github.com/Reference-LAPACK/lapack/archive/v3.12.0.tar.gz
         sha256: eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b
-  
+
   - name: boost
     buildsystem: simple
     build-commands:
@@ -96,9 +99,9 @@ modules:
       - ./b2 headers
       - ./b2 install
     sources:
-      - sha256: 46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b
+      - sha256: 49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305
         type: archive
-        url: https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2
+        url: https://archives.boost.io/release/1.90.0/source/boost_1_90_0.tar.bz2
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -157,15 +160,14 @@ modules:
       - type: archive
         url: https://github.com/tbeu/matio/archive/refs/tags/v1.5.26.tar.gz
         sha256: 4aa5ac827ee49a3111f88f8d9b8ae034b8757384477e8f29cb64582c7d54e156
-    cmake-options:
-      -DBUILD_SHARED_LIBS=ON
-      -DENABLE_EXTENDED_SPARSE=ON        
+    config-opts:
+      - -DBUILD_SHARED_LIBS=ON
+      - -DENABLE_EXTENDED_SPARSE=ON
 
   - shared-modules/linux-audio/fftw3f.json
 
   - name: cmake
     buildsystem: autotools
-    config-opts: #CMake used at runtime
     sources:
       - type: archive
         url: https://github.com/Kitware/CMake/releases/download/v4.0.2/cmake-4.0.2.tar.gz
@@ -174,7 +176,6 @@ modules:
   - name: nelson
     buildsystem: cmake-ninja
     builddir: true
-    build-options:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_HELP=ON
@@ -182,11 +183,11 @@ modules:
       - -DMPI_ROOT=/app
       - -DMPI_C_COMPILER=/app/bin/mpicc
       - -DMPI_CXX_COMPILER=/app/bin/mpicxx
-      - -DBoost_DIR=/app/lib/cmake/Boost-1.88.0
+      - -DBoost_DIR=/app/lib/cmake/Boost-1.90.0
       - -DBLA_VENDOR=OpenBLAS
       - -DOpenBLAS_ROOT=/app
       - -DLAPACK_ROOT=/app
-      - -DLAPACKE_ROOT=/app      
+      - -DLAPACKE_ROOT=/app
       - -DHDF5_ROOT=/app
       - -DHDF5_DIR=/app/share/cmake/hdf5
       - -Wno-dev
@@ -194,5 +195,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/nelson-lang/nelson.git
-        commit: 89d05c2d42f00c229da0f853b5efe2bab109353d
+        commit: 6cd5fb317845a537c4125bf6958c637582a579e1
 
