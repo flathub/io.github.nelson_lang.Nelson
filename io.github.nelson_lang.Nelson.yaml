@@ -42,16 +42,6 @@ modules:
         url: https://github.com/libgit2/libgit2/archive/refs/tags/v1.9.0.tar.gz
         sha256: 75b27d4d6df44bd34e2f70663cfd998f5ec41e680e1e593238bbe517a84c7ed2
 
-  - name: giflib
-    buildsystem: simple
-    build-commands:
-      - make -j $FLATPAK_BUILDER_N_JOBS
-      - make PREFIX=/app install
-    sources:
-      - type: archive
-        url: https://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz
-        sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd
-
   - name: openblas
     buildsystem: cmake-ninja
     builddir: true
