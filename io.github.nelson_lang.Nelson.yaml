@@ -156,6 +156,22 @@ modules:
 
   - shared-modules/linux-audio/fftw3f.json
 
+  - name: pcre2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DPCRE2_BUILD_PCRE2_8=ON
+      - -DPCRE2_BUILD_PCRE2_16=ON
+      - -DPCRE2_BUILD_PCRE2_32=ON
+      - -DPCRE2_SUPPORT_JIT=ON
+      - -DPCRE2_BUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz
+        sha256: c08ae2388ef333e8403e670ad70c0a11f1eed021fd88308d7e02f596fcd9dc16
+
   - name: cmake
     buildsystem: autotools
     sources:
@@ -186,4 +202,4 @@ modules:
       - type: git
         url: https://github.com/nelson-lang/nelson.git
         commit: 6cd5fb317845a537c4125bf6958c637582a579e1
-
+  
